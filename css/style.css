@@ -1,0 +1,527 @@
+:root {
+    --bg-dark: hsl(212 93% 2%);
+    --bg: hsl(206 64% 4%);
+    --bg-light: hsl(204 39% 9%);
+    --text: hsl(204 100% 95%);
+    --text-muted: hsl(204 29% 69%);
+    --highlight: hsl(204 21% 39%);
+    --border: hsl(204 28% 28%);
+    --border-muted: hsl(203 43% 17%);
+    --primary: hsl(203 74% 68%);
+    --secondary: hsl(26 65% 66%);
+    --danger: hsl(9 26% 64%);
+    --warning: hsl(52 19% 57%);
+    --success: hsl(146 17% 59%);
+    --info: hsl(217 28% 65%);
+}
+
+/* Apply Colors to the Layout */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text);
+}
+
+.navbar {
+    background-color: var(--bg) !important;
+    border-bottom: 1px solid var(--border-muted);
+}
+
+/* 1. Style the Nav Links */
+.navbar-nav .nav-link {
+    color: var(--text-muted) !important;
+    /* Use your muted blue HSL */
+    font-weight: 500;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    /* Needed for the underline effect */
+}
+
+/* 2. Hover Effect */
+.navbar-nav .nav-link:hover {
+    color: var(--primary) !important;
+    /* Turns bright blue on hover */
+}
+
+/* 3. Professional Underline Animation */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* 4. Active state (for when they are on OLL or PLL page) */
+.navbar-nav .nav-link.active {
+    color: var(--text) !important;
+}
+
+/* Target only Spica-specific navbar elements */
+.spica-brand,
+.spica-search-btn,
+.spica-nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 5px 0;
+    /* Adds a small vertical hit-area for the mouse */
+    margin: 0 15px;
+    transition: color 0.2s ease;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    /* Keeps text level with the input */
+}
+
+/* Color Shift Hover State */
+.spica-brand:hover,
+.spica-search-btn:hover,
+.spica-nav-link:hover {
+    color: var(--primary) !important;
+}
+
+/* Strict styling for the input box */
+.spica-input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid var(--border-muted) !important;
+    /* Thicker line for better structure */
+    border-radius: 0 !important;
+    color: var(--text) !important;
+    box-shadow: none !important;
+
+    /* READABILITY FIXES */
+    font-size: 1.1rem !important;
+    /* Slightly larger text */
+    padding: 5px 10px !important;
+    /* More breathing room inside */
+    letter-spacing: 0.5px;
+    /* Cleaner character spacing */
+    transition: all 0.3s ease !important;
+}
+
+/* Make the placeholder text easier to see */
+.spica-input::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.7;
+}
+
+/* Interaction: Light up the background slightly when typing */
+.spica-input:focus {
+    border-bottom: 2px solid var(--primary) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    /* Very subtle tint */
+    outline: none;
+}
+
+
+.spica-input:focus {
+    border-bottom: 1px solid var(--primary) !important;
+}
+
+.hero-section {
+    position: relative;
+    /* Blend from your darkest color (top) to your hero color (bottom) */
+    background: linear-gradient(to bottom,
+            var(--bg-dark) 0%,
+            var(--bg-light) 30%,
+            var(--bg-light) 60%,
+            var(--bg-dark) 100%);
+    border: none !important;
+    overflow: hidden;
+    z-index: 1;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* 1. Gradient first (top layer), Image second (bottom layer) */
+    background-image:
+        radial-gradient(circle at 85% 50%, transparent 0%, var(--bg-light) 60%),
+        url('../assets/rubiks.png');
+
+    /* 2. Map sizes: 'cover' for the gradient, '40%' for the cube */
+    background-size: cover, 40%;
+
+    /* 3. Map positions: 'center' for gradient, '85% center' for cube */
+    background-position: center, 85% center;
+
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    /* Bumped slightly to help it show through the gradient */
+    z-index: -1;
+}
+
+.hero-section h1 {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.hero-section .btn {
+    animation: fadeInUp 0.s ease-out 0.3s forwards;
+    /* 0.3s delay */
+    opacity: 0;
+    /* Starts hidden so it can fade in */
+}
+
+.spica-stats-section {
+    background-color: var(--bg-dark);
+    /* Blend from bg-light to bg-dark over the first 20% of the section */
+    background: linear-gradient(to bottom,
+            var(--bg-dark) 0%,
+            var(--bg-light) 15%,
+            var(--bg-light) 85%,
+            var(--bg-dark) 100%);
+    padding: 80px 0;
+    margin-top: -2px;
+    margin-bottom: 3rem;
+    position: relative;
+    /* CRITICAL: Anchors the ::before element */
+    overflow: hidden;
+    /* Keeps the cube from "bleeding" out */
+    z-index: 1;
+}
+
+.spica-stats-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* 1. Make the "hole" in the gradient much larger and softer */
+    background-image:
+        radial-gradient(circle at 20% 50%, transparent 0%, var(--bg-dark) 100%),
+        url('../assets/scrambled.png');
+
+    background-size: cover, 40%;
+    background-position: center, 20% center;
+    background-repeat: no-repeat;
+
+    /* 2. Lower opacity makes it look 'embedded' in the background */
+    opacity: 0.1;
+
+    /* 3. The Secret Sauce: Blending */
+    /* mix-blend-mode: luminosity; */
+    /* Merges the cube's light with the bg's dark blue */
+
+    z-index: -1;
+}
+
+
+
+/* Unique class for the small boxes */
+.stat-card {
+    background-color: var(--bg-light) !important;
+    border: 1px solid var(--border-muted) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary) !important;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        /* Starts 30px lower */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        /* Ends at its natural position */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.1;
+    }
+
+    /* Matches your original 0.1 opacity */
+}
+
+
+/* Style the Cards */
+.alg-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-muted);
+    color: var(--text);
+}
+
+.alg-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom Text colors */
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Algorithm Notation box */
+.notation {
+    font-family: 'Courier New', monospace;
+    background: var(--bg-dark);
+    color: var(--primary);
+    padding: 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Default state for the custom pill buttons */
+.btn-outline-custom {
+    color: var(--text-muted);
+    border: 1px solid var(--border-muted);
+    background-color: transparent;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Hover state - using your highlight color */
+.btn-outline-custom:hover {
+    background-color: var(--highlight) !important;
+    border-color: var(--primary) !important;
+    /* Makes the edge pop slightly */
+    color: var(--text) !important;
+}
+
+/* Active/Selected state */
+/* This ensures the active button stays highlighted after the click */
+.btn-outline-custom.active {
+    background-color: var(--highlight) !important;
+    border-color: var(--primary) !important;
+    color: var(--text) !important;
+}
+
+.signup-container {
+    min-height: 90vh;
+    background: radial-gradient(circle at center, var(--bg-light) 0%, var(--bg-dark) 100%);
+}
+
+.signup-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-muted);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Reuse your existing strict input class */
+.signup-card .spica-input {
+    margin-bottom: 0;
+    /* Let the Bootstrap mb-4 handle spacing */
+}
+
+/* 1. The Main "Create Account" Button */
+.spica-auth-btn-primary {
+    background-color: var(--primary) !important;
+    color: var(--bg-dark) !important;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    display: block;
+}
+
+.spica-auth-btn-primary:hover {
+    background-color: var(--text) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px hsla(200, 100%, 60%, 0.4);
+}
+
+/* 2. The Subtle "Already have an account" Button */
+.spica-auth-btn-secondary {
+    background-color: transparent;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border-muted) !important;
+    border-radius: 50px;
+    padding: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.spica-auth-btn-secondary:hover {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+    background-color: hsla(200, 100%, 60%, 0.05);
+}
+
+/* Dashboard Specific Layout */
+.dashboard-body {
+    display: flex;
+    background-color: var(--bg-dark);
+}
+
+.spica-sidebar {
+    width: 15vw;
+    height: 100vh;
+    /* Blend from your main bg to a slightly lighter shade at the bottom */
+    background: linear-gradient(to bottom, var(--bg-dark) 0%, var(--bg) 100%);
+    border-right: 1px solid var(--border-muted);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    /* Ensures it stays above main content during scroll */
+
+    /* Optional: Add a very soft shadow for depth */
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+
+    /* Layout for links */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dashboard-main {
+    margin-left: 260px;
+    /* Same as sidebar width */
+    width: calc(100% - 260px);
+    min-height: 100vh;
+}
+
+/* Updated Sidebar Links */
+.sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    padding: 14px 20px;
+    /* Increased padding for a larger hit-area */
+    border-radius: 12px;
+    /* Matches your card-style rounding */
+    margin: 5px;
+    margin-bottom: 10px;
+    /* More breathing room between links */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0;
+    /* Start hidden */
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Hover State */
+.sidebar-nav .nav-link:hover {
+    background-color: hsla(200, 100%, 60%, 0.05);
+    /* Very subtle tint */
+    color: var(--primary);
+    transform: translateX(5px);
+    /* Smooth slide-in effect */
+}
+
+/* Active State - Makes it stand out */
+.sidebar-nav .nav-link.active {
+    background-color: var(--bg-light);
+    color: var(--primary);
+    box-shadow: inset 4px 0 0 var(--primary);
+    /* Adds a "status bar" on the left */
+}
+
+/* Subtle fix for the logout link specifically */
+.sidebar-nav .text-danger:hover {
+    background-color: hsla(8, 84%, 66%, 0.1) !important;
+    color: var(--danger) !important;
+}
+
+
+/* Mastery Stat Cards */
+.stat-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-muted);
+    opacity: 0;
+    /* Start hidden */
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.sidebar-nav .nav-link:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.sidebar-nav .nav-link:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.sidebar-nav .nav-link:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.sidebar-nav .nav-link:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+/* Skipping the <hr> */
+
+/* Stats load slightly after the sidebar */
+.col-md-4 .stat-card {
+    animation-delay: 0.5s;
+}
+
+.col-md-8 .stat-card {
+    animation-delay: 0.6s;
+}
+
+/* This forces the cards into a grid instead of a vertical list */
+.alg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Fix the card sizing */
+.alg-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-muted);
+    border-radius: 12px;
+    padding: 20px;
+    height: 100%;
+    /* Makes all cards in a row the same height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure images don't break the layout */
+.alg-image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
