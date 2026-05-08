@@ -1,0 +1,9 @@
+# Ignore the large library folder
+/vendor/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore your environment/config files if you have them
+.env
