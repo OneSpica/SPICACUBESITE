@@ -1,9 +1,12 @@
-# Ignore the large library folder
+# 1. Libraries (The heaviest part)
 /vendor/
 
-# Ignore OS-specific files
+# 2. Composer metadata (Lock file is optional, but many hide it in small projects)
+composer.lock
+
+# 3. OS Junk (Keeps your repo clean across Mac/Windows)
 .DS_Store
 Thumbs.db
 
-# Ignore your environment/config files if you have them
-.env
+# 4. XAMPP/Local Configs
+php_errors.log
