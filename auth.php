@@ -29,7 +29,7 @@
             </div>
 
             <div class="mt-5">
-                <a href="index.php" class="text-muted small text-decoration-none">&larr; Back to Algorithm Library</a>
+                <a href="index.php" class="text-muted small text-decoration-none">&larr; Back to Home</a>
             </div>
         </div>
     </section>
