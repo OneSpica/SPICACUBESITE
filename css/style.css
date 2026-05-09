@@ -483,8 +483,12 @@ body {
     animation-delay: 0.3s;
 }
 
-.sidebar-nav .nav-link:nth-child(5) {
+.sidebar-nav .nav-link:nth-child(4) {
     animation-delay: 0.4s;
+}
+
+.sidebar-nav .nav-link:nth-child(5) {
+    animation-delay: 0.5s;
 }
 
 /* Skipping the <hr> */

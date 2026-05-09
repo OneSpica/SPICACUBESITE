@@ -39,6 +39,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="dashboard.php" class="nav-link active">📊 Overview</a>
             <a href="mastery.php" class="nav-link">🏆 My Mastery</a>
             <a href="settings.php" class="nav-link">⚙️ Settings</a>
+            <a href="user_pll.php" class="nav-link">🧩 Algorithms</a>
             <hr class="border-muted">
             <a href="logout.php" class="nav-link text-danger">🚪 Logout</a>
         </nav>
